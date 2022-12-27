@@ -6,7 +6,6 @@ import { API_URL } from '@/config/index';
 import styles from '@/styles/Event.module.css';
 export default function ({ event }) {
   const { attributes: evt } = event;
-  console.log(evt);
   const deleteEvent = () => {};
   return (
     <Layout>

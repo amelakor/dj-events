@@ -5,8 +5,10 @@ import { useState, useEffect, useContext } from 'react';
 import Link from 'next/link';
 import Layout from '@/components/Layout';
 import styles from '@/styles/AuthForm.module.css';
+import AuthContext from '@/context/AuthContext';
 
 export default function RegisterPage() {
+  const { register, error } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -18,6 +20,7 @@ export default function RegisterPage() {
       toast.error('Passwords do not match!');
       return; // Don't submit the form
     }
+    register({ username, email, password });
   };
   return (
     <Layout title="User Registration">
@@ -33,7 +36,7 @@ export default function RegisterPage() {
               type="text"
               id="username"
               value={username}
-              onChange={e => setEmail(e.target.value)}
+              onChange={e => setUsername(e.target.value)}
             />
           </div>
           <div>

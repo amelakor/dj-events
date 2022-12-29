@@ -14,6 +14,10 @@ export default function RegisterPage() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [username, setUsername] = useState('');
 
+  useEffect(() => {
+    error && toast.error(error);
+  }, [error]);
+
   const handleSubmit = e => {
     e.preventDefault();
     if (password !== confirmPassword) {
@@ -26,7 +30,7 @@ export default function RegisterPage() {
     <Layout title="User Registration">
       <div className={styles.auth}>
         <h1>
-          <FaUser /> Log In
+          <FaUser /> Register
         </h1>
         <ToastContainer />
         <form onSubmit={handleSubmit}>
@@ -69,7 +73,7 @@ export default function RegisterPage() {
           <input type="submit" value="Login" className="btn" />
         </form>
         <p>
-          Already have an account? <Link href="/account/login">Login</Link>
+          Already have an account? <Link href="/account/login">Register</Link>
         </p>
       </div>
     </Layout>

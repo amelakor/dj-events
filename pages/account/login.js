@@ -16,8 +16,12 @@ export default function LoginPage() {
   const handleSubmit = e => {
     e.preventDefault();
     login({ email, password });
-    console.log(email, password);
   };
+
+  useEffect(() => {
+    error && toast.error(error);
+  }, [error]);
+
   return (
     <Layout title="User login">
       <div className={styles.auth}>
